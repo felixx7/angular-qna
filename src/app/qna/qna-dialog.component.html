@@ -1,0 +1,83 @@
+<p>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My Application Q & A</span>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" class="float-right">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" class="float-right">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="container">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label><i class="fa fa-search"></i>&nbsp;Type here to Filter</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <!-- <div class="row"> -->
+        <img cImg height="200" rounded src="assets/mike.jpg" thumbnail width="200"/>
+        <b>Rahman Junadi</b><br>
+        <b>@aahhh32</b><br>
+        FrontEnd Developer
+      <!-- </div> -->
+    </div>  
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container">
+      <!-- QUESTION -->
+      <div class="cart-item" *ngFor="let question of questions; let i = index">
+        <div class="row">
+          <div class="col-md-1">
+            <img cImg height="200" rounded src="assets/{{i}}.jpg" thumbnail width="80" />
+          </div>
+          <div class="col-md-1">
+            <span class="cart-item" *ngFor="let user of users">
+              <span *ngIf="user.id === question.id_user">
+                <b>{{ user.name }}</b>
+                <br>
+                <b>{{ user.username }}</b> 
+                <br>
+                {{ user.occupation }}
+              </span>
+            </span>
+          </div>
+          <div class="col-md-10">
+            <b>{{question.title}}</b>
+            <br>
+            <br>
+            <b>{{question.question}}</b>
+            <br>
+            <i class="float-right">{{question.date}}</i>
+            <br>
+            <br>
+            <div class="example-button-row">
+              <button mat-flat-button color="primary" type="button" (click)="onSubmitTask()">Answer</button>&nbsp;
+              <button mat-flat-button color="warn">
+                {{question.like}} <mat-icon>favorite</mat-icon>
+              </button>&nbsp;
+              <button mat-flat-button color="accent">
+                Report
+              </button>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+      <!-- pagination -->
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-drawer-content>  
+
+</mat-drawer-container>

@@ -1,0 +1,67 @@
+<!-- <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
+<div class="container">
+  <div class="row">
+<br>
+<br>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <form [formGroup]="todoForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Task</mat-label>
+                    <input matInput formControlName="task" id="task" type="text">
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" type="button" (click)="onSubmitTask()">Add</button>
+            </form>
+            <br>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- task Column -->
+      <ng-container matColumnDef="task">
+        <th mat-header-cell *matHeaderCellDef> Task </th>
+        <td mat-cell *matCellDef="let element ; let i = index;">
+          <div *ngIf="element.checklist == true">
+            <div style="text-decoration: line-through;"> <p>{{element.task}}</p></div>
+          </div>
+          <div *ngIf="element.checklist == false">
+            <p>{{element.task}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- checked Column -->
+      <ng-container matColumnDef="checked">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element ; let i = index">
+          <mat-checkbox [checked]="element.checked" (change)="onChecklistTask(element)"></mat-checkbox> 
+        </td>
+      </ng-container>
+    
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element ; let i = index"> <button mat-raised-button color="warn" type="button" (click)="onDeleteTask(i)"><mat-icon>delete</mat-icon></button></td>
+      </ng-container>
+
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
