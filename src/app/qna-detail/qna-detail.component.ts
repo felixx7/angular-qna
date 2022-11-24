@@ -32,7 +32,7 @@ export class QnaDetailComponent implements OnInit {
     this.questions = ELEMENT_QUESTION
     this.users = ELEMENT_USER
     this.questionData = JSON.parse(localStorage.getItem('question')!)
-    this.questionDetailGet = this.questionDetail(this.questionData)
+    this.questionDetail(this.questionData)
   }
 
   // make sure to destory the editor
@@ -67,10 +67,9 @@ export class QnaDetailComponent implements OnInit {
 
   questionDetail(questionData:any){
     this.questions = ELEMENT_QUESTION
-    let getDetail = this.questions.filter(function (el) {
+    this.questionDetailGet = this.questions.filter(function (el) {
       return questionData.id == el.id
     })
-    return getDetail
   }
 }
 
