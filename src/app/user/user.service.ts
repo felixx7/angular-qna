@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from "rxjs";
-import { Firestore, collectionData, collection,doc,addDoc } from '@angular/fire/firestore';
-import { deleteDoc,updateDoc } from 'firebase/firestore';
-
+import { Firestore, collectionData, collection,doc,addDoc,deleteDoc,updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
