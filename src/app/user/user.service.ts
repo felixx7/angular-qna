@@ -21,15 +21,15 @@ export class UserService {
     return addDoc(collection(this.firestore,'user'),user)
   }
 
-  public deleteUser(user:any){
-    let docRef = doc(this.firestore,`user/${user.id}`)
-    return deleteDoc(docRef)
-  }
+  // public deleteUser(user:any){
+  //   let docRef = doc(this.firestore,`user/${user.id}`)
+  //   return deleteDoc(docRef)
+  // }
 
-  public updateUser(user:any){
-    let docRef = doc(this.firestore,`user/${user.id}`)
-    return updateDoc(docRef,user)
-  }
+  // public updateUser(user:any){
+  //   let docRef = doc(this.firestore,`user/${user.id}`)
+  //   return updateDoc(docRef,user)
+  // }
 
   public getSortingPerformances() {
       const headers = {
