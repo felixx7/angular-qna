@@ -1,0 +1,247 @@
+<p>
+  <mat-toolbar>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My Application Q & A</span>
+
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+      class="float-right"
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      class="float-right"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="container">
+      <!-- <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label><i class="fa fa-search"></i>&nbsp;Type here to Filter</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div> -->
+      <!-- <div class="row"> -->
+      <img
+        cImg
+        height="200"
+        rounded
+        src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
+        thumbnail
+        width="200"
+      /><br />
+      <b>Rahman Junadi</b><br />
+      <b>@aahhh32</b><br />
+      FrontEnd Developer
+      <!-- </div> -->
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container">
+      <br />
+      <!-- QUESTION -->
+      <!-- <div class="cart-item" *ngFor="let question of questions; let i = index"> -->
+      <div class="row">
+        <div class="col-md-1">
+          <img
+            cImg
+            rounded
+            src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
+            thumbnail
+            width="80"
+          />
+        </div>
+        <div class="col-md-1">
+          <span class="cart-item" *ngFor="let user of users">
+            <span *ngIf="user.id === questionDetailGet[0].id_user">
+              <b>{{ user.name }}</b>
+              <br />
+              <b>{{ user.username }}</b>
+              <br />
+              {{ user.occupation }}
+            </span>
+          </span>
+        </div>
+        <div class="col-md-10">
+          <b>{{ questionDetailGet[0].title }}</b>
+          <br />
+          <br />
+          <b>{{ questionDetailGet[0].question }}</b>
+          <br />
+          <i class="float-right">{{ questionDetailGet[0].date }}</i>
+          <br />
+          <br />
+          <!-- <div class="example-button-row">
+              <button mat-flat-button color="primary" type="button" (click)="onSubmitTask()">
+                <mat-icon>question_answer</mat-icon> Answer</button>&nbsp;
+              <button mat-flat-button color="warn">
+                <mat-icon>favorite</mat-icon>
+              </button>&nbsp;
+              <button mat-flat-button color="accent">
+                <mat-icon>report_problem</mat-icon>Report
+              </button>
+            </div>
+            <br> -->
+        </div>
+      </div>
+      <div class="cart-question" *ngFor="let question of taskList">
+        <!-- ANSWER -->
+        <div class="row">
+          <div class="col-md-1">
+            <!-- <img cImg height="200" rounded src="assets/mike.jpg" thumbnail width="80"/> -->
+          </div>
+          <div class="col-md-1">
+            <img
+              cImg
+              rounded
+              src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
+              thumbnail
+              width="80"
+            />
+          </div>
+          <div class="col-md-1">
+            <b>Rahman Junadi</b><br />
+            <b>@aahhh32</b><br />
+            FrontEnd Developer
+          </div>
+          <div class="col-md-9">
+            <div [innerHTML]="question.task">
+              {{ question.task }}
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <form [formGroup]="todoForm">
+            <div class="NgxEditor__Wrapper">
+              <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+              <ngx-editor
+                [editor]="editor"
+                [ngModel]="html"
+                [disabled]="false"
+                [placeholder]="'Type here...'"
+                formControlName="task"
+                id="task"
+              ></ngx-editor>
+            </div>
+            <br />
+            <button
+              mat-flat-button
+              color="primary"
+              type="button"
+              (click)="onSubmitTask()"
+              class="float-right"
+            >
+              <mat-icon>send</mat-icon>Send
+            </button>
+            <a
+              mat-flat-button
+              color="warn"
+              type="button"
+              routerLink="/qna"
+              class="float-right"
+            >
+              <mat-icon>arrow_back</mat-icon> Back
+            </a>
+          </form>
+        </div>
+      </div>
+      <br />
+      <br />
+      <!-- </div> -->
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<div style="display:none">
+  <div style="color:blue">
+    <div class="cart-question" *ngFor="let question of taskList">
+      <div [innerHTML]="question.task">
+        {{ question.task }}
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <!-- <form [formGroup]="todoForm">
+      <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" [ngModel]="html" [disabled]="true" [placeholder]="'Type here...'"
+          formControlName="task" id="task"></ngx-editor>
+      </div>
+      <br>
+      <button mat-raised-button color="primary" type="button" (click)="onSubmitTask()">Answer</button>
+    </form> -->
+  </div>
+  <div class="container">
+    <mat-card>
+      <mat-card-content>
+        <div class="row">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="task">
+              <th mat-header-cell *matHeaderCellDef>Task</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <div *ngIf="element.checklist == true">
+                  <div style="text-decoration: line-through;">
+                    <p>{{ element.task }}</p>
+                  </div>
+                </div>
+                <div *ngIf="element.checklist == false">
+                  <p>{{ element.task }}</p>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="checked">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <mat-checkbox
+                  [checked]="element.checked"
+                  (change)="onChecklistTask(element)"
+                ></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <button
+                  mat-raised-button
+                  color="warn"
+                  type="button"
+                  (click)="onDeleteTask(i)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
