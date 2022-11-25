@@ -1,58 +1,9 @@
-<p>
-  <mat-toolbar>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My Application Q & A</span>
-
-    <span class="example-spacer"></span>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
-      class="float-right"
-    >
-      <mat-icon>settings</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-      class="float-right"
-    >
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
-
+<app-navbar></app-navbar>
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
-    <div class="container">
-      <!-- <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label><i class="fa fa-search"></i>&nbsp;Type here to Filter</mat-label>
-          <input matInput >
-        </mat-form-field>
-      </div> -->
-      <!-- <div class="row"> -->
-      <img
-        cImg
-        height="200"
-        rounded
-        src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
-        thumbnail
-        width="200"
-      /><br />
-      <b>Rahman Junadi</b><br />
-      <b>@aahhh32</b><br />
-      FrontEnd Developer
-      <!-- </div> -->
-    </div>
+    <app-sidebar></app-sidebar>
   </mat-drawer>
+  
   <mat-drawer-content>
     <div class="container">
       <br />

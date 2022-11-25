@@ -37,6 +37,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { UserComponent } from './user/user.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { UserComponent } from './user/user.component';
     TodoComponent,
     QnaComponent,
     QnaDetailComponent,
-    UserComponent
+    UserComponent,
+    SidebarComponent,
+    NavbarComponent
   ],
   imports: [
     FormsModule,
@@ -78,6 +83,7 @@ import { UserComponent } from './user/user.component';
     MatPaginatorModule,
     MatToolbarModule,
     MatGridListModule,
+    MatListModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
   ],
