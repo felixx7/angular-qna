@@ -10,16 +10,20 @@
       <br />
       <!-- QUESTION -->
       <div class="cart-item" *ngFor="let user of userData let i = index">
-        <div class="row">
+        <div class="row list">
           <div class="col-md-1">
-            <img cImg rounded src="https://cdn-icons-png.flaticon.com/512/219/219986.png" thumbnail width="80" />
+            <br>
+            <img cImg rounded src="https://cdn-icons-png.flaticon.com/512/219/219986.png" thumbnail width="80"/>
+            <br>
           </div>
           <div class="col-md-11">
-                <b>{{user.id}}</b>
-                <br />
-                <b>{{user.name}}</b>
-                <br />
-                <b>{{user.username}}</b>
+            <br>
+              <b>{{user.id}}</b>
+              <br />
+              <b>{{user.name}}</b>
+              <br />
+              <b>{{user.username}}</b>
+            <br>  
           </div>
         </div>
         <br />

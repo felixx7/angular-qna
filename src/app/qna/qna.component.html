@@ -9,17 +9,13 @@
       <br />
       <!-- QUESTION -->
       <div class="cart-item" *ngFor="let question of questions; let i = index">
-        <div class="row">
+        <div class="row list">
           <div class="col-md-1">
-            <img
-              cImg
-              rounded
-              src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
-              thumbnail
-              width="80"
-            />
+            <br>
+            <img cImg rounded src="https://cdn-icons-png.flaticon.com/512/219/219986.png" thumbnail width="80"/>
           </div>
           <div class="col-md-1">
+            <br>
             <span class="cart-item" *ngFor="let user of users">
               <span *ngIf="user.id === question.id_user">
                 <b>{{ user.name }}</b>
@@ -31,6 +27,7 @@
             </span>
           </div>
           <div class="col-md-10">
+            <br>
             <b>{{ question.title }}</b>
             <br />
             <br />
