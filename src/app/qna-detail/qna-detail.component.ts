@@ -71,10 +71,10 @@ export class QnaDetailComponent implements OnInit {
       questionDetailId : this.questionDetailGet[0].id
     }
 
-    this.qnaDetailService.addQuestDetail(dataQuestionAnswer).then(()=>{
-      // if(dataQuestionAnswer){
-      //   console.log("berhasil")
-      // }
+    this.qnaDetailService.addQuestDetail(dataQuestionAnswer).then((dataQuestionAnswer)=>{
+      if(dataQuestionAnswer){
+        console.log(dataQuestionAnswer)
+      }
     })
   }
 
