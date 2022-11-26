@@ -152,7 +152,15 @@
           </form> -->
           <!-- NEW FORM -->
           <form [formGroup]="questionAnswerForm">
-            <div class="NgxEditor__Wrapper">
+            <mat-form-field appearance="fill" style="width:100%;" >
+              <mat-label>Give an Answer</mat-label>
+              <textarea matInput formControlName="questionAnswer" ></textarea>
+              <br>
+              <br>
+              <br>
+              <br>
+            </mat-form-field>
+            <!-- <div class="NgxEditor__Wrapper">
               <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
               <ngx-editor
                 [editor]="editor"
@@ -162,7 +170,7 @@
                 formControlName="questionAnswer"
                 id="questionAnswer"
               ></ngx-editor>
-            </div>
+            </div> -->
             <br />
             <button mat-flat-button color="primary" type="button" (click)="onSubmitQuestionAnswer()" class="float-right">
               <mat-icon>send</mat-icon>Send
