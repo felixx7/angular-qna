@@ -59,3 +59,11 @@ export class QnaDetailService {
   }
 
 }
+
+interface QuestionAnswer {
+  id: string,
+  questionAnswer : string,
+  questionDetailId : string
+}
+
+

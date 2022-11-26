@@ -66,8 +66,7 @@ export class QnaDetailComponent implements OnInit {
 
   onSubmitQuestionAnswer() {
     let dataQuestionAnswer = {
-      id : 0,
-      questionAnswer : this.questionAnswerForm.controls.questionAnswer.value,
+      questionAnswer : this.questionAnswerForm.controls.questionAnswer.value!,
       questionDetailId : this.questionDetailGet[0].id
     }
 
@@ -146,3 +145,9 @@ const ELEMENT_QUESTION: Question[] = [
   {id: 2,id_user:2,title:"NOT FOUND", question: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."', date: "21-11-2022", like: 12 },
   {id: 3,id_user:3,title:"ALERT ESCAPE", question: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."', date: "23-12-2022", like: 45},
 ];
+
+interface QuestionAnswer {
+  id: string,
+  questionAnswer : string,
+  questionDetailId : string
+}
