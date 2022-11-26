@@ -66,6 +66,7 @@ export class QnaDetailComponent implements OnInit {
 
   onSubmitQuestionAnswer() {
     let dataQuestionAnswer = {
+      id : 0,
       questionAnswer : this.questionAnswerForm.controls.questionAnswer.value,
       questionDetailId : this.questionDetailGet[0].id
     }
