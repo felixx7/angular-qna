@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class AppComponent {
 
-  title = 'qna'
+  title = 'qna' 
 
   constructor(private firestore: Firestore) {
 
