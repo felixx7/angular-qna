@@ -2,14 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from "rxjs";
+import { Firestore, collectionData, collection,doc,addDoc,deleteDoc,updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QnaDetailService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private firestore: Firestore,private httpClient: HttpClient) { }
  
+  public getQuestionAnswer():Observable<any>{
+    let user = collection(this.firestore,'questionAnswer')
+    return collectionData(user) as Observable<any>
+  }
+
+  public addQuestDetail(dataQuestionAnswer:any){
+    dataQuestionAnswer.id = doc(collection(this.firestore,'id')).id
+    return addDoc(collection(this.firestore,'questionAnswer'),dataQuestionAnswer)
+  }
+
+  // public delete(questionAnswer:any,id:any){
+  //   let docRef = doc(this.firestore,`questionAnswer/${id}`)
+  //   return deleteDoc(docRef)
+  // }
+
   public getSortingPerformances() {
       const headers = {
           'Content-Type': 'application/json'

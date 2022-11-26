@@ -24,8 +24,9 @@ export class QnaDetailComponent implements OnInit {
   users = Array();
   questionData: any;
   questionDetailGet: any;
+  getQuestionAnswerByQuestionDetailId: any;
 
-  constructor() { }
+  constructor(private qnaDetailService : QnaDetailService) { }
 
   ngOnInit(): void {
     this.editor = new Editor()
@@ -33,6 +34,7 @@ export class QnaDetailComponent implements OnInit {
     this.users = ELEMENT_USER
     this.questionData = JSON.parse(localStorage.getItem('question')!)
     this.questionDetail(this.questionData)
+    this.getQuestionAnswer()
   }
 
   // make sure to destory the editor
@@ -40,10 +42,47 @@ export class QnaDetailComponent implements OnInit {
     this.editor.destroy();
   }
 
+  questionAnswerForm = new FormGroup({
+    questionAnswer: new FormControl("", Validators.required),
+  })
+
   todoForm = new FormGroup({
     task: new FormControl("Lorem ipsum dolor sit amet", Validators.required),
     checklist:new FormControl(false)
   })
+
+  getQuestionAnswer(){
+
+    let id = this.questionDetailGet[0].id
+
+    this.qnaDetailService.getQuestionAnswer().subscribe((res)=>{
+
+      return this.getQuestionAnswerByQuestionDetailId = res.filter(function (el:any) {
+        return id == el.questionDetailId
+      })
+
+    })
+  }
+
+  onSubmitQuestionAnswer() {
+    let dataQuestionAnswer = {
+      questionAnswer : this.questionAnswerForm.controls.questionAnswer.value,
+      questionDetailId : this.questionDetailGet[0].id
+    }
+
+    this.qnaDetailService.addQuestDetail(dataQuestionAnswer).then((dataQuestionAnswer)=>{
+      if(dataQuestionAnswer){
+        console.log("berhasil")
+      }
+    })
+  }
+
+  // onDelete(id:any){
+  //   this.qnaDetailService.delete(id).then((user)=>{
+  //     console.log(user)
+  //     this.getQuestionAnswer
+  //   })
+  // }
 
   onSubmitTask() {
 

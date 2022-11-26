@@ -9,11 +9,13 @@
       <br />
       <!-- QUESTION -->
       <!-- <div class="cart-item" *ngFor="let question of questions; let i = index"> -->
-      <div class="row">
+      <div class="row list">
         <div class="col-md-1">
+          <br>
           <img cImg rounded src="https://cdn-icons-png.flaticon.com/512/219/219986.png" thumbnail width="80"/>
         </div>
         <div class="col-md-1">
+          <br>
           <span class="cart-item" *ngFor="let user of users">
             <span *ngIf="user.id === questionDetailGet[0].id_user">
               <b>{{ user.name }}</b>
@@ -25,7 +27,8 @@
           </span>
         </div>
         <div class="col-md-10">
-          <b>{{ questionDetailGet[0].title }}</b>
+          <br>
+          <b>{{ questionDetailGet[0].title }} | {{ questionDetailGet[0].id }}</b>
           <br />
           <br />
           <b>{{ questionDetailGet[0].question }}</b>
@@ -46,13 +49,14 @@
             <br> -->
         </div>
       </div>
-      <div class="cart-question" *ngFor="let question of taskList">
-        <!-- ANSWER -->
-        <div class="row">
+      <!-- OLD ANSWER -->
+      <!-- <div class="cart-question" *ngFor="let question of taskList">
+        <div class="row list">
           <div class="col-md-1">
-            <!-- <img cImg height="200" rounded src="assets/mike.jpg" thumbnail width="80"/> -->
+            <br>
           </div>
           <div class="col-md-1">
+            <br>
             <img
               cImg
               rounded
@@ -62,14 +66,49 @@
             />
           </div>
           <div class="col-md-1">
+            <br>
             <b>Rahman Junadi</b><br />
             <b>@aahhh32</b><br />
             FrontEnd Developer
           </div>
           <div class="col-md-9">
+            <br>
             <div [innerHTML]="question.task">
               {{ question.task }}
             </div>
+          </div>
+        </div>
+        <br />
+      </div> -->
+      
+      <div class="cart-question" *ngFor="let quest of getQuestionAnswerByQuestionDetailId">
+        <div class="row list">
+          <div class="col-md-1">
+            <br>
+          </div>
+          <div class="col-md-1">
+            <br>
+            <img cImg rounded src="https://cdn-icons-png.flaticon.com/512/219/219969.png" thumbnail width="80"/>
+          </div>
+          <div class="col-md-1">
+            <br>
+            <b>Rahman Junadi</b><br />
+            <b>@aahhh32</b><br />
+            FrontEnd Developer
+            <br>
+            <br>
+          </div>
+          <div class="col-md-8">
+            <br>
+            <div [innerHTML]="quest.questionAnswer">
+              {{ quest.questionAnswer }}
+            </div>
+          </div>
+          <div class="col-md-1">
+            <br>
+            <!-- <button mat-flat-button color="primary" type="button" (click)="onDelete(quest,quest.id)">
+              <mat-icon>delete</mat-icon>
+            </button> -->
           </div>
         </div>
         <br />
@@ -78,7 +117,8 @@
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-11">
-          <form [formGroup]="todoForm">
+          <!-- OLD FORM -->
+          <!-- <form [formGroup]="todoForm">
             <div class="NgxEditor__Wrapper">
               <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
               <ngx-editor
@@ -107,6 +147,27 @@
               routerLink="/qna"
               class="float-right"
             >
+              <mat-icon>arrow_back</mat-icon> Back
+            </a>
+          </form> -->
+          <!-- NEW FORM -->
+          <form [formGroup]="questionAnswerForm">
+            <div class="NgxEditor__Wrapper">
+              <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+              <ngx-editor
+                [editor]="editor"
+                [ngModel]="html"
+                [disabled]="false"
+                [placeholder]="'Type here...'"
+                formControlName="questionAnswer"
+                id="questionAnswer"
+              ></ngx-editor>
+            </div>
+            <br />
+            <button mat-flat-button color="primary" type="button" (click)="onSubmitQuestionAnswer()" class="float-right">
+              <mat-icon>send</mat-icon>Send
+            </button>
+            <a mat-flat-button color="warn" type="button" routerLink="/qna" class="float-right">
               <mat-icon>arrow_back</mat-icon> Back
             </a>
           </form>

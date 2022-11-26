@@ -5,10 +5,17 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .list:hover {
-    font-weight: bold;
+    /* font-weight: bold; */
     background-color: #f0f0f1;
-    cursor: pointer;
   }
+
+.list-sidebar:hover {
+  border-left: 2px solid red;
+  font-weight: bold;
+  background-color: #f0f0f1;
+  cursor: pointer;
+}
+
 .margin{
   margin-top:5px
 }  
