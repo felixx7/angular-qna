@@ -16,7 +16,7 @@ export class QnaDetailService {
     return collectionData(user) as Observable<any>
   }
 
-  public addQuestDetail(dataQuestionAnswer:any){
+  public addQuestDetail(dataQuestionAnswer:QuestionAnswer){
     dataQuestionAnswer.id = doc(collection(this.firestore,'id')).id
     return addDoc(collection(this.firestore,'questionAnswer'),dataQuestionAnswer)
   }
