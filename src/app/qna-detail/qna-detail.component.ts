@@ -57,6 +57,8 @@ export class QnaDetailComponent implements OnInit {
 
     this.qnaDetailService.getQuestionAnswer().subscribe((res)=>{
 
+      console.log(res)
+
       return this.getQuestionAnswerByQuestionDetailId = res.filter(function (el:any) {
         return id == el.questionDetailId
       })
@@ -72,18 +74,20 @@ export class QnaDetailComponent implements OnInit {
     }
 
     this.qnaDetailService.addQuestDetail(dataQuestionAnswer).then(()=>{
+      // console.log(a)
       // if(dataQuestionAnswer){
       //   console.log(dataQuestionAnswer)
       // }
     })
   }
 
-  // onDelete(id:any){
-  //   this.qnaDetailService.delete(id).then((user)=>{
-  //     console.log(user)
-  //     this.getQuestionAnswer
-  //   })
-  // }
+  onDelete(quest:any){
+    // console.log(quest)
+    this.qnaDetailService.delete(quest).then(()=>{
+      // console.log(quest)
+      // this.getQuestionAnswer
+    })
+  }
 
   onSubmitTask() {
 
